@@ -10,9 +10,10 @@ class Menu:
         print("<----- Gestor de Tareas ----->")
         print("<----- Menu Principal ----->")
 
-        print("1. Ingresar usuario")
+        print("1. Iniciar sesion")
         print("2. Buscar usuario")
-        print("3. Modificar usuario")
+        print("3. Registrar usuario")
+        print("0. Salir")
         self.opc = int(input("Opc -> "))
 
     def MenuModificacion(self):
@@ -23,6 +24,21 @@ class Menu:
 
         self._opc = int(input("Opc -> "))
         
+    def MenuSesionIniciada(self):
+        print("<----Sesion iniciada----->\n")
+        print("1. Agregar nueva tarea")
+        print("2. Mostrar tareas")
+        print("3. Editar una tarea")
+        print("4. Eliminar una tarea")
+        print("0. Cerrar sesion")
+        
+        self._opc = int(input("Opc -> "))
+        
+        
+        
+
+        
+        print("<----Sesion iniciada----->")
 
     @property
     def Opc(self):
