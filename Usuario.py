@@ -4,36 +4,33 @@ class Usuario:
     password = ""
 
     def __init__(self, user, nombre, password) -> None:
-        self.user = user
-        self.nombre = nombre
-        self.password = password
-
-    def buscarUsuario(self,):
-        pass
+        self._user = user
+        self._nombre = nombre
+        self._password = password
 
     @property
-    def user(self):
-        return self.user
+    def User(self):
+        return self._user
     
-    @user.setter
-    def user(self, user):
-        self.user = user
+    @User.setter
+    def User(self, user):
+        self._user = user
 
     @property
-    def nombre(self):
-        return self.nombre
+    def Nombre(self):
+        return self._nombre
     
-    @nombre.setter
-    def nombre(self, nombre):
-        self.nombre = nombre
+    @Nombre.setter
+    def Nombre(self, nombre):
+        self._nombre = nombre
 
     @property
-    def password(self):
-        return self.password
+    def Password(self):
+        return self._password
     
-    @password.setter
-    def password(self, password):
-        self.password = password
+    @Password.setter
+    def Password(self, password):
+        self._password = password
 
     def __str__(self) -> str:
-        return f"{self.user}\n{self.nombre}\n{self.password}\n"
+        return f"{self._user}\n{self._nombre}\n{self._password}\n"

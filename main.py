@@ -1,18 +1,17 @@
 from Usuario import *
+from Menu import *
 import sys
 
 opc = None
 
 usuarios = []
 
-while opc != 0:
-    print("<----- Gestor de Tareas ----->")
-    print("<----- Menu Principal ----->")
+menu = Menu()
 
-    print("1. Ingresar usuario")
-    print("2. Buscar usuario")
-    print("3. Modificar usuario")
-    opc = int(input("Opc -> "))
+while opc != 0:
+    
+    menu.MenuPrincipal()
+    opc = menu.Opc
 
     match opc:
         case 1: 
@@ -33,7 +32,33 @@ while opc != 0:
                         print(str(u))
                     else:
                         print("No >v")
+                else:
+                    print("vacia Bv")
+        
+        case 3 : 
+            user = input("User a buscar -> ")
+            if len(usuarios) > 0:
+                for u in usuarios:
+                    if(user == u.User):
+                        menu.MenuModificacion()
+                        opc2 = menu.Opc
+                        atributo = None
+                        
+                        match opc2:
+                            case 1:
+                                atributo = input("User -> ")
+                                u.User(atributo)
+                            case 2:
+                                atributo = input("Nombre -> ")
+                                u.Nombre(atributo)
+                            case 3:
+                                atributo = input("Password -> ")
+                                u.Password(atributo)
+                    else:
+                        print("No >v")
             else:
                 print("vacia Bv")
+
+            
             
 sys.exit()
