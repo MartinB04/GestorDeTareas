@@ -9,7 +9,19 @@ usuarios = []
 
 menu = Menu()
 
-def AgregarUsuario():
+def IniciarSesion():
+    user = input("User a buscar -> ")
+    password = input("Password -> ")
+    conexion = ConexionMySQL(host="localhost", user="root", password="Kazooie10", database="gestor")
+    consulta_select = f"SELECT * FROM Usuario WHERE `user` = '{user}' AND `password` = '{password}' ;"
+    resultados = conexion.ejecutar_consulta(consulta_select)
+    if resultados:
+        menu.MenuSesionIniciada()
+    else:
+        print("Bv")
+    
+    
+def RegistrarUsuario():
     user = input("User -> ")
     nombre = input("Nombre -> ")
     password = input("Password -> ")
@@ -34,33 +46,12 @@ while opc != 0:
 
     match opc:
         case 1: 
-            AgregarUsuario()
+            IniciarSesion()
         case 2:
             BuscarUsuario()
             
         case 3 : 
-            user = input("User a buscar -> ")
-            if len(usuarios) > 0:
-                for u in usuarios:
-                    if(user == u.User):
-                        menu.MenuModificacion()
-                        opc2 = menu.Opc
-                        atributo = None
-                        
-                        match opc2:
-                            case 1:
-                                atributo = input("User -> ")
-                                u.User(atributo)
-                            case 2:
-                                atributo = input("Nombre -> ")
-                                u.Nombre(atributo)
-                            case 3:
-                                atributo = input("Password -> ")
-                                u.Password(atributo)
-                    else:
-                        print("No >v")
-            else:
-                print("vacia Bv")
+            RegistrarUsuario()
 
     
             
