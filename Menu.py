@@ -22,6 +22,7 @@ class Menu:
         print("3. Password")
 
         self._opc = int(input("Opc -> "))
+        
 
     @property
     def Opc(self):
