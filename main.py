@@ -8,7 +8,7 @@ opc = None
 HOST = "localhost"
 USER = "root"
 PASSWORD = "Kazooie10"
-DATABASE = "gestor"
+DATABASE = "gestordetareas"
 
 usuarios = []
 
@@ -18,7 +18,7 @@ def IniciarSesion():
     user = input("User a buscar -> ")
     password = input("Password -> ")
     conexion = ConexionMySQL(HOST, USER, PASSWORD, DATABASE)
-    consulta_select = f"SELECT * FROM Usuario WHERE `user` = '{user}' AND `password` = '{password}' ;"
+    consulta_select = f"SELECT * FROM Usuario WHERE `username` = '{user}' AND `userpassword` = '{password}' ;"
     resultados = conexion.ejecutar_consulta(consulta_select)
     if resultados:
         menu.MenuSesionIniciada()
@@ -32,14 +32,14 @@ def RegistrarUsuario():
     password = input("Password -> ")
 
     conexion = ConexionMySQL(HOST, USER, PASSWORD, DATABASE)
-    consulta_insert = "INSERT INTO Usuario (user, nombre, password) VALUES (%s, %s, %s);"
+    consulta_insert = "INSERT INTO Usuario (username, nombre, userpassword) VALUES (%s, %s, %s);"
     datos_insert = (user, nombre, password)
     conexion.ejecutar_insercion(consulta_insert, datos_insert)        
     
 def BuscarUsuario():
     user = input("User a buscar -> ")
     conexion = ConexionMySQL(HOST, USER, PASSWORD, DATABASE)
-    consulta_select = f"SELECT * FROM Usuario WHERE `user` = '{user}';"
+    consulta_select = f"SELECT * FROM Usuario WHERE `username` = '{user}';"
     resultados = conexion.ejecutar_consulta(consulta_select)
     for fila in resultados:
         print(fila)
